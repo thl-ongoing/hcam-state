@@ -14,7 +14,16 @@ public class NotAssigned extends AbstractState {
     public void assignUser(User executiveUser) {
         task.setExecutiveUser(executiveUser);
         task.setActualState(new Assigned(task));
-        System.out.println("User " + task.getExecutiveUser() + " was assigned");
+    }
+
+    @Override
+    public void accept() {
+        task.setActualState(new Accepted(task));
+    }
+
+    @Override
+    public void cancel() {
+        task.setActualState(new Canceled(task));
     }
 
     @Override

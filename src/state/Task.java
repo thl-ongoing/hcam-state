@@ -17,6 +17,14 @@ public class Task {
         setActualState(new Assigned(this));
     }
 
+    public void accept() {
+        actualState.accept();
+    }
+
+    public void finish() {
+        actualState.finish();
+    }
+
 
     public void setActualState(AbstractState actualState) {
         this.actualState = actualState;
@@ -27,7 +35,9 @@ public class Task {
         this.executiveUser = executiveUser;
     }
 
-
+    public void start() {
+        this.actualState.start();
+    }
 
     public User getExecutiveUser() {
         return executiveUser;
@@ -37,11 +47,20 @@ public class Task {
         return actualState.toString();
     }
 
+
     public void assignUser(User executiveUser) {
         actualState.assignUser(executiveUser);
     }
 
+    public void release() {
+        actualState.release();
+    }
+
     public void unassignUser() {
         actualState.unassignUser();
+    }
+
+    public void cancel() {
+        actualState.cancel();
     }
 }

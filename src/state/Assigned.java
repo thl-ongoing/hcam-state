@@ -9,10 +9,19 @@ public class Assigned extends AbstractState {
     }
 
     @Override
+    public void accept() {
+        task.setActualState(new Accepted(task));
+    }
+
+    @Override
     public void unassignUser() {
-        System.out.println("User " + task.getExecutiveUser() + " was unassigned");
         task.setExecutiveUser(null);
         task.setActualState(new NotAssigned(task));
+    }
+
+    @Override
+    public void cancel() {
+        task.setActualState(new Canceled(task));
     }
 
     @Override

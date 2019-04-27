@@ -8,9 +8,17 @@ public abstract class AbstractState {
 
     public void assignUser(User executiveUser) {}
 
+    public void accept() {}
+
+    public void release() {}
+
     public void unassignUser() {}
 
     public void cancel() {}
+
+    public void start() {}
+
+    public void finish() {}
 
     public void setTask(Task task) {
         this.task = task;
